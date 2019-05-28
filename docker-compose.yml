@@ -1,0 +1,26 @@
+version: "2.2"
+services:
+    webserver:
+      build: ./webserver
+      scale: 3
+      ports:
+        - "80"
+      networks:
+        - docker-nginx
+
+    loadbalancer:
+      build:
+        context: ./loadbalancer
+      ports:
+        - "80:80"
+      networks:
+        - docker-nginx
+
+networks:
+  docker-nginx:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24
+          gateway: 172.16.238.1

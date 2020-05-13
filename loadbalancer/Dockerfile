@@ -1,4 +1,4 @@
-FROM nginx
+FROM openresty/openresty:1.15.8.3-2-alpine
 
 # add nginx' host configuration
 RUN rm /etc/nginx/conf.d/default.conf

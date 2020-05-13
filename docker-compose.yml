@@ -13,6 +13,8 @@ services:
         context: ./loadbalancer
       ports:
         - "80:80"
+      depends_on:
+        - webserver
       networks:
         - docker-nginx
 
